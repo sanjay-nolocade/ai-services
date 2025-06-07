@@ -1,188 +1,139 @@
-Excellent — here is a ready-to-use README.md for your project 🚀:
+Here is your perfect final README.md — ready to copy:
 
 ⸻
 
-README.md
+📄 README.md
 
-# AI Tag Suggestion API
+# 🖼️ AI Image Alt Text Generator API (FastAPI + HuggingFace)
 
-FastAPI project to expose AI APIs — first use case: suggest tags for uploaded images.
+This is a FastAPI service that generates **descriptive alt text** for images using:
 
----
-
-## 🚀 Features
-
-✅ FastAPI  
-✅ Swagger API docs  
-✅ CORS support  
-✅ Logging  
-✅ Docker-ready  
-✅ Clean architecture  
-✅ Ready for unit tests  
-✅ Easily extendable for more AI services
+- `nlpconnect/vit-gpt2-image-captioning` (default)
+- Outputs **multiple suggestions** (configurable)
 
 ---
 
-## 🛠 Project Structure
+## 🚀 Project Structure
 
-app/
-├── api/v1/endpoints/    # API endpoints
-├── core/                # Config & Logging
-├── services/            # Business logic (AI models, etc.)
-├── utils/               # Helper functions
-├── main.py              # App entrypoint
-tests/                   # Unit tests
+/ (root)
+├── requirements.txt
+├── .env               # optional - for environment variables
+├── app/
+│   ├── main.py        # FastAPI entry point
+│   ├── image_caption.py  # Model loading & caption generation
 
 ---
 
-## 📦 Setup (Local Development)
+## 🏃 Running Locally
 
 ### 1️⃣ Clone the repo
 
 ```bash
-git clone https://github.com/your-repo/fastapi-ai-tags.git
-cd fastapi-ai-tags
+git clone https://github.com/your-repo/ai-image-caption-api.git
+cd ai-image-caption-api
 
+2️⃣ Setup virtual env
 
-⸻
-
-2️⃣ Create virtual environment
-
-# If not created yet
-python3.12 -m venv venv
-
-
-⸻
-
-3️⃣ Activate virtual environment
-
-# On Mac / Linux:
+python3 -m venv venv
 source venv/bin/activate
 
-# On Windows:
-venv\Scripts\activate
+3️⃣ Install dependencies
 
+pip install -r requirements.txt
+
+4️⃣ Run API server
+
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+5️⃣ API Docs
+	•	Swagger: http://localhost:8000/swagger
+	•	ReDoc: http://localhost:8000/redoc
 
 ⸻
 
-4️⃣ Install dependencies
+🚀 Deployment on Render.com
+
+1️⃣ Push project to GitHub
+
+git init
+git remote add origin https://github.com/your-repo/ai-image-caption-api.git
+git add .
+git commit -m "Initial commit"
+git push -u origin main
+
+2️⃣ Create Render Web Service
+	•	Go to: https://render.com
+	•	New Web Service → Connect your GitHub repo
+	•	Select branch → Deploy
+
+3️⃣ Render Settings
+
+Start Command:
+
+uvicorn app.main:app --host 0.0.0.0 --port $PORT
+
+Build Command:
 
 pip install -r requirements.txt
 
 
 ⸻
 
-5️⃣ Run FastAPI app
+📝 Environment Variables
 
-uvicorn app.main:app --reload
+If you use .env, you can either:
 
-
-⸻
-
-6️⃣ Open API docs 🚀
-	•	Swagger UI: http://localhost:8000/docs
-	•	ReDoc: http://localhost:8000/redoc
+✅ Upload it in Render → Environment → Add Env Vars
+✅ Or commit .env.example and add sensitive values in Render UI.
 
 ⸻
 
-🐳 Run with Docker
+✅ Example API Usage
 
-docker build -t fastapi-ai-tags .
-docker run -p 8000:8000 fastapi-ai-tags
+Endpoint:
 
+POST /generate-alt-text/?num_captions=3
 
-⸻
+Body:
+	•	file: image file (form-data)
 
-✅ API Endpoints
-
-Health check
-
-GET /health
-
-Suggest Tags
-
-POST /v1/tags/suggest
-Content-Type: multipart/form-data
-Body: image file
-
-Example Response:
+Response:
 
 {
-  "tags": ["nature", "sunset", "mountain"]
+  "alt_texts": [
+    "A dog sitting on grass",
+    "A cute puppy in a park",
+    "A brown dog lying on green grass"
+  ]
 }
 
 
 ⸻
 
-🧪 Run Tests
-
-pytest tests/
-
-
-⸻
-
-⚙️ Linting & Formatting
-
-# Format code with Black
-black app/ tests/
-
-# Sort imports
-isort app/ tests/
-
-# Lint with Flake8
-flake8 app/ tests/
-
+🔥 TODO / Improvements
+	•	Support BLIP or BLIP2 for richer captions
+	•	Add caching for repeated images
+	•	Add basic auth / rate limiting
 
 ⸻
 
-🌟 Roadmap
-	•	Initial project structure
-	•	Health check
-	•	Tag suggestion endpoint
-	•	Integrate real AI model (PyTorch / TensorFlow / HuggingFace)
-	•	Add authentication (optional)
-	•	Add database (optional)
-	•	Add CI/CD
-	•	Add more AI endpoints
-
-⸻
-
-📝 Notes
-	•	CORS is open (allow_origins = ["*"]) — change in production!
-	•	No authentication yet — can be added easily.
-	•	No database yet — can be added if needed.
-
-⸻
-
-🧑‍💻 Author
-
-Built by [Your Name].
-
-⸻
-
-💥 License
+📜 License
 
 MIT
 
----
+⸻
 
-### Summary:
-
-✅ You can **copy this README.md** into your project root → done!  
-✅ It will guide **you and your team** when setting up the project.
+🙌 Credits
+	•	Built with ❤️ using FastAPI and HuggingFace Transformers.
 
 ---
 
-Would you like me to also:
+# 🚀 Summary:
 
-✅ Generate the `.vscode/` settings (so VS Code will auto-use venv & auto-format)?  
-✅ Show you how to **plug an actual AI model** into this structure? (HuggingFace / PyTorch / TensorFlow)
+✅ **README.md** includes:
 
-👉 Just say:
-
-1️⃣ **"yes vscode settings"**  
-2️⃣ **"yes AI model example"**
-
----
-
-Want me to prepare those too? 🚀 You’re building an excellent starter project! 🚀
+✅ Local run instructions  
+✅ Render deploy instructions  
+✅ Start Command fix  
+✅ API usage  
+✅ Project structure  
